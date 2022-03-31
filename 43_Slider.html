@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang=“pt-BR”>
+
+<head>
+    <title>Curso de Javascript</title>
+    <meta charset=“UTF-8”>
+    <style>
+        #slider {
+            width: 1000px;
+            height: 300px;
+            border: 1px solid #000;
+            /*background-image: url(../Projetos/imagem.jpg);*/
+        }
+    </style>
+</head>
+<body>
+    <div id="slider"></div>
+
+
+    <script>
+
+        //Array para ir pegando as imagens
+        var imgs = [];
+        //Slider que armazena o local aonde estar na tela
+        var slider;
+        var imgAtual;
+        var maxImg;
+        var tmp;
+        var tempoTroca;
+
+        function preCarregamento() {
+            var s = 1;
+            for (var i = 0; i < 5; i++) {
+                imgs[i] = new Image();
+                imgs[i].src = "../Projetos/imagem" + s + ".jpg";
+                s++;
+            }
+        }
+
+        function carregarImg(img) {
+            slider.style.backgroundImage = "url('"+imgs[img].src+"')";
+        }
+
+        function inicia() {
+            preCarregamento();
+            imgAtual=0;
+            maxImg=imgs.length-1;
+            slider = document.getElementById("slider");
+            carregarImg(imgAtual);
+            tempoTroca=1000;
+            tmp=setInterval(troca,tempoTroca);
+        }
+
+        function troca(){
+            imgAtual++;
+            if (imgAtual>maxImg) {
+                imgAtual=0;
+            }
+            carregarImg(imgAtual);
+        }
+
+        window.addEventListener("load", inicia);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang=“pt-BR”>
+
+<head>
+    <title>Curso de Javascript</title>
+    <meta charset=“UTF-8”>
+    <style>
+        #slider {
+            width: 1000px;
+            height: 500px;
+            border: 1px solid #000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            /*background-image: url(../Projetos/imagem.jpg);*/
+        }
+
+        .btSlider {
+            background-color: rgba(0, 0, 0, 0.4);
+            height: 30%;
+            color: #fff;
+            cursor: pointer;
+            outline: none;
+            margin: 10px;
+            border: none;
+        }
+
+        #dvload{
+            width: 100%;
+            height: 5px;
+            margin-top: 25%;
+            border: 1px solid rgba(255, 255, 255, 0.3)
+        }
+
+        #barra{
+            width: 50%;
+            height: 100%;
+            background-color: seashell;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="slider">
+        <button class="btSlider" onclick="troca(-1)"><</button>
+                <div id="dvload">
+                    <div id="barra"></div>
+                </div>
+        <button class="btSlider" onclick="troca(1)">></button>
+    </div>
+
+
+    <script>
+
+        var imgs = [];
+        var slider;
+        var imgAtual;
+        var maxImg;
+        var tmp;
+        var tempoTroca;
+        var vtempo;
+        var vload;
+
+        function preCarregamento() {
+            var s = 1;
+            for (var i = 0; i < 5; i++) {
+                imgs[i] = new Image();
+                imgs[i].src = "../Projetos/imagem" + s + ".jpg";
+                s++;
+            }
+        }
+
+        function carregarImg(img) {
+            slider.style.backgroundImage = "url('" + imgs[img].src + "')";
+        }
+
+        function inicia() {
+            preCarregamento();
+            imgAtual = 0;
+            maxImg = imgs.length - 1;
+            slider = document.getElementById("slider");
+            vload = document.getElementById("barra"); 
+            carregarImg(imgAtual);
+            tempoTroca = 0;
+            /* tmp = setInterval(troca, tempoTroca); */
+            anima();
+        }
+
+        function troca(dir) {
+            tempoTroca=0;
+            imgAtual+=dir;
+            if (imgAtual > maxImg) {
+                imgAtual = 0;
+            }else if (imgAtual < 0) {
+                imgAtual = maxImg;
+            }   
+            carregarImg(imgAtual);
+        }
+
+        function anima(){
+            tempoTroca++;
+            if (tempoTroca >= 500) {
+                tempoTroca=0;
+                troca(1);
+            }
+            vtempo=tempoTroca/5;
+            vload.style.width=vtempo+"%";
+            window.requestAnimationFrame(anima);
+        }
+
+        window.addEventListener("load", inicia);
+    </script>
+</body>
+
+</html>
