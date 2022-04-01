@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificador de imagem</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        #foto {
+            margin-top: 20px;
+            margin-right: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Vamos contar!</h1>
+    </header>
+    <section>
+        <div id="dados">
+            <label for="numI">Numero inicial</label>
+            <input type="number" name="calculo" id="numi">
+            <div>
+                <label for="numf">Numero final</label>
+                <input type="number" name="calculo" id="numf">
+                <div>
+                    <label for="numf">Passos</label>
+                    <input type="number" name="calculo" id="nump">
+                </div>
+
+                <div>
+                    <input type="button" name="calculo" onclick="contar()" value="Contar">
+                </div>
+            </div>
+            <div id="res">
+                Resultado
+            </div>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; Curso em video</p>
+    </footer>
+    <script>
+        function contar() {
+            var numI = document.getElementById('numi')
+            var numF = document.getElementById('numf')
+            var passo = document.getElementById('nump')
+            var resposta = document.getElementById('res')
+
+
+            if (numI.value.length == 0 || numF.value.length == 0 || passo.value.length == 0) {
+                res.innerHTML = `Impossivel contar`
+               //window.alert('Sem solucao')
+            }
+            else {
+                resposta.innerHTML = 'Contando'
+                let i = Number(numI.value)
+                let f = Number(numF.value)
+                let p = Number(passo.value)
+                if (p == 0) {
+                    window.alert('Impossivel contar e 0 passa a valer 1')
+                    p = 1;
+                }
+                //Contagem crescente
+                if (i < f) 
+                {
+                    for (let s = i; s <= f; s += p) {
+                        res.innerHTML += ` ${s} \u{1F601}` //colocando emoji no Javascript
+                    }
+                }
+                //Contagem regressiva
+                else {
+                    for (let c = i; c >= f; c -= p) {
+                        res.innerHTML += ` ${c} \u{1F601}`
+                    }
+                }
+                res.innerHTML += `\u{1F3C1}`
+            }
+        }
+    </script>
+</body>
+
+</html>

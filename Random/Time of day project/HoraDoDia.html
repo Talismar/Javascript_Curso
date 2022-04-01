@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Somando valores</title>
+    <link rel="stylesheet" href="style.css"/>
+  </head>
+
+  <body onload="carregar()">
+    <header>
+      <h1>Hora do Dia!</h1>
+    </header>
+    
+    <section>
+
+      <div>Aqui vai aparecer a mensagem....</div>
+      <div class="foto">
+        <img class="imagem" src="./img/fotomanha.jpg" width="250px" height="250px" alt=""/>
+      </div>
+      
+    </section>
+
+    <footer>
+      <p>&copy; Curso em video</p>
+    </footer>
+    
+    <script>
+      function carregar() {
+        var msg = document.querySelector(".imagem");
+        var data = new Date();
+        var hora = data.getHours();
+        //var hora = 11
+        
+        if (hora >= 0 && hora < 12) {
+          msg.src = "./img/fotomanha.jpg";
+          document.body.style.background = "black";
+        } 
+        
+        else if (hora >= 12 && hora < 18) {
+          msg.src = "./img/fototarde.jpg";
+          document.body.style.background = "write";
+        }
+        
+        else {
+          msg.src = "./img/fotonoite.jpg";
+          document.body.style.background = "red";
+        }
+        // console.log(hora);
+      }
+    </script>
+  </body>
+</html>

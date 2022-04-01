@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificador de imagem</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>TABUADA</h1>
+    </header>
+
+    <section>
+        <div id="dados">
+            <label for="num1">Digite o numero</label>
+            <input type="number" name="num1" id="numero">
+
+            <input type="button" value="Gerar tabuada" name="num1" id="gerar" onclick="tabuada()">
+            <div>
+                <select id="res" size="10">
+                    <option value="">Digite um numero acima</option>
+                </select>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; Curso em video</p>
+    </footer>
+    
+    <script>
+        function tabuada() {
+            let num1 = document.querySelector('#numero')
+            let gerar = document.querySelector('#gerar')
+            let res = document.querySelector('#res')
+            let n = Number(num1.value)
+            var resposta = 0;
+            
+            if (num1.value.length == 0) {
+                window.alert('Digite um numero')
+            }
+            else {
+             res.innerHTML = ''
+                for (var r = 0; r <= 10; r++) {
+                    var item = document.createElement('option')
+                    item.text = `${n} X ${r} = ${n * r}`
+                    item.value = `tab${r}`
+                    res.appendChild(item)
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

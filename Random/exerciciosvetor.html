@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analizando numero</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        #flist {
+            width: 190px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Analisador de Números!</h1>
+    </header>
+    <section>
+        <div>
+            Numero (entre 1 e 100):
+            <input type="number" name="fnum" id="fnum">
+            <input type="button" value="Adicionar" onclick="adicionar()">
+            <select name="flist" id="flist" size="6"></select>
+            <br>
+            <input type="button" value="Finalizar" onclick="finalizar()">
+        </div>
+        <div id="res"></div>
+    </section>
+    <footer>
+        <p>&copy; Curso em video</p>
+    </footer>
+    <script>
+        var num = document.querySelector('input#fnum')
+        var lista = document.querySelector('select#flist')
+        var res = document.querySelector('#res')
+        let vetor = []
+
+        function isNumero(n) {
+            if (Number(n) >= 1 && Number(n) <= 100) {
+                return true
+            }
+            else {
+                return false
+            }
+        }
+
+        function inlist(n, l) {
+            if (l.indexOf(Number(n)) != -1) {
+                return true
+            }
+            else { return false }
+        }
+
+        function adicionar() {
+            if (isNumero(num.value) && !inlist(num.value, vetor)) {
+                vetor.push(Number(num.value))
+
+                //Criar uma nova opção toda fez que adicionar
+                let item = document.createElement('option')
+                item.text = `Valor ${num.value} adicionado.`
+                
+                //Criar uma nova option em lista
+                lista.appendChild(item)
+            }
+            else {
+                window.alert('Valor invalido ou já encontrado.')
+            }
+            
+            num.value = '' //Para limpar o campo
+            num.focus()    //Para adicionar o foco     
+        }
+
+        function finalizar() {
+            if (vetor.length == 0) {
+                window.alert('Adicione valores!')
+            }
+            else {
+                //Verifica o tamanho do vetor / Total de numeros
+                let tot = vetor.length
+                
+
+                let maior = vetor[0]
+                let menor = vetor[0]
+                let soma = 0
+                let media = 0
+                for (let pos in vetor) //verificar todo o vetor
+                {
+                    if (vetor[pos] > maior) {
+                        maior = vetor[pos]
+                    }
+                    if (vetor[pos] < menor){
+                        menor = vetor[pos]
+                    }
+                    soma +=vetor[pos] 
+                    media = soma/vetor.length
+                }
+                //Limpa o conteudo de res
+                res.innerHTML = ''
+                //Adicionar o total
+                res.innerHTML += `<h3>Ao todo, temos ${tot} numeros cadastrados.</h3>`
+                res.innerHTML += `<h4>O maior valor é ${maior}</h4>`
+                res.innerHTML += `<h4>O menor valor é ${menor}</h4>`
+                res.innerHTML += `<h4>Somando todos os valores, temos ${soma}</h4>`
+                res.innerHTML += `<h6>Media de todos os valores é: ${media}</h6>`
+            }
+        }
+    </script>
+</body>
+
+</html>
