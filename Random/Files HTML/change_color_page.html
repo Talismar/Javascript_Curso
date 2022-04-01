@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <title>Curso de Javascript</title>
+    <meta charset=“UTF-8”>
+    <style>
+        #painel {
+            border: 1px solid #000;
+            border-radius: 10px;
+            padding: 15px;
+            width: 150px;
+            height: 100px;
+        }
+
+        body{
+            background-color: antiquewhite;
+        }
+    </style>
+
+    <script>
+        //Essa pagina corresponde a pagina pai por conta do parent.document.body....
+        function mudaCor(cor){
+            parent.document.body.style.backgroundColor=cor;
+        }
+
+    </script>
+</head>
+<body>
+
+    <button onclick="mudaCor('#f00')">Vermelho</button>
+    <button onclick="mudaCor('#0f0')">Verde</button>
+    <button onclick="mudaCor('#00f')">Azul</button>
+    
+</body>
+</html>
