@@ -1,19 +1,19 @@
-function relogio1() {
+function clock() {
   var data = new Date();
-  var hora = data.getHours();
-  var minuto = data.getMinutes();
-  var segundo = data.getSeconds();
+  var hour = data.getHours();
+  var minute = data.getMinutes();
+  var seconds = data.getSecondss();
 
-  if (segundo < 10) {
-      segundo = '0' + segundo;
+  if (seconds < 10) {
+      seconds = '0' + seconds;
   }
-  if (minuto < 10) {
-      minuto = '0' + minuto;
+  else if (minute < 10) {
+      minute = '0' + minute;
   }
-  if (hora < 10) {
-      hora = '0' + hora;
+  else if (hour < 10) {
+      hour = '0' + hour;
   }
-  var horas = hora + ":" + minuto + ":" + segundo;
-  document.querySelector('#relogio').value = horas;
+  var hours = hour + ":" + minute + ":" + seconds;
+  document.querySelector('#relogio').value = hours;
 }
-var tempo = setInterval(relogio1, 1000);
+var tempo = setInterval(clock, 1000);

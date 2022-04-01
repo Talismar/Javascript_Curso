@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Slides</title>
+  </head>
+
+  <body>
+    <div class="titulo"></div>
+    <button onclick="inicia()">Start</button>
+    <button onclick="stop()">Stop</button>
+    <script>
+      var title;
+      var interval;
+
+      function changeColor() {
+        titulo = document.querySelector(".titulo");
+        titulo.textContent = "Talismar";
+        titulo.style.fontSize = "50px";
+        titulo.style.color = titulo.style.color == "red" ? "blue" : "red";
+      }
+
+      function inicia() {
+        interval = setInterval(changeColor, 1000);
+      }
+
+      function stop() {
+        clearInterval(interval);
+      }
+
+      window.addEventListener("load", inicia);
+    </script>
+  </body>
+</html>
