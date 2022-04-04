@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metodo dataset</title>
+    <style>
+        .carro{
+            width: 300px;
+            height: 550px;
+            display: inline;
+            cursor: pointer;
+            color: orangered;
+        }
+        #painel{
+            border:solid;
+            border-radius:10px;
+            padding: 10px;
+            width: 300px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="painel"></div>
+    <div id="c1" class="carro" data-cor="white">a</div>
+    <div id="c2" class="carro" data-cor="Red">a</div>
+    <div id="c3" class="carro" data-cor="Orange">a</div>
+    <div id="c4" class="carro" data-cor="wismoke">a</div>
+    <div id="c5" class="carro" data-cor="black">a</div>
+
+    <script>
+        // dataset - Adicionar propriedade persornalizada ao elemento HTML
+        
+        function definePainel(){
+            // forma pra definir
+            //var obj1 = event.target.potencia = "100"
+
+            // forma para obter
+            var obj = event.target
+            document.getElementById("painel").innerHTML = "Cor >: " +  obj.dataset.cor
+            console.log(obj)
+        }
+
+        function start(){
+            document.getElementById("c1").addEventListener('click', definePainel)
+            document.getElementById("c2").addEventListener('click', definePainel)
+            document.getElementById("c3").addEventListener('click', definePainel)
+            document.getElementById("c4").addEventListener('click', definePainel)
+            document.getElementById("c5").addEventListener('click', definePainel)
+        }
+        
+        
+        
+        window.addEventListener("load", start)
+
+    </script>
+</body>
+
+</html>

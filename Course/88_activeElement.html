@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursos de Javascript</title>
+
+   
+</head>
+<body>
+    <div id="cx"></div>
+   <input type="text" name="txt">
+   <button>Teste</button>
+    <p>CFB Cursos - Curso de Javascript</p>    
+    <img src="Projetos/imagem1.jpg" alt="Img" width="200px">
+
+    <br>
+    <textarea name="" id="text original" cols="30" rows="10">Talismar Fernandes Costa</textarea>
+    <span id="text selection"></span>
+    <script>
+        //Para obter qual elementos estar selecionado
+        /* 
+        function ativo(){
+            return document.activeElement.tagName;
+        } 
+       
+        var dvcx, frame;
+
+        function loop(){
+            dvcx.innerHTML =  ativo()
+            frames = requestAnimationFrame(loop);
+        }       
+
+        function inicia(){
+            dvcx=document.getElementById("cx");
+            loop();
+        } 
+        */  
+
+        function ativo(){
+            var cx = document.getElementById("text selection")
+            var elemento = document.activeElement
+            var selecao = elemento.value.substring(elemento.selectionStart, elemento.selectionEnd)
+
+            cx.innerHTML = selecao
+            
+        }
+
+        function inicia(){
+            var text = document.getElementById("text original")
+            text.addEventListener("mouseup", ativo)
+        }
+
+        window.addEventListener("load", inicia)
+    </script>
+</body>
+
+</html>
